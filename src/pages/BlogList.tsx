@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchBlogPosts, type BlogListItem } from "../lib/strapi";
+import { useConfig } from "../contexts/ConfigContext";
 
 const formatDate = (value: string | null) => {
   if (!value) return "";
@@ -13,6 +14,10 @@ const BlogList = () => {
   const [posts, setPosts] = useState<BlogListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const cfg = useConfig();
+  const heading = cfg?.extra?.blog?.listHeading || "Blog";
+  const loadingText = cfg?.extra?.blog?.loadingText || "Loading...";
+  const errorText = cfg?.extra?.blog?.errorText || "Error loading posts";
 
   useEffect(() => {
     let mounted = true;
@@ -33,9 +38,9 @@ const BlogList = () => {
 
   return (
     <main className="container mx-auto px-4 pt-24 pb-16">
-      <h1 className="text-4xl font-bold mb-6">Blog</h1>
-      {loading && <p>Loading...</p>}
-      {!!error && <p className="text-red-500">{error}</p>}
+      <h1 className="text-4xl font-bold mb-6">{heading}</h1>
+      {loading && <p>{loadingText}</p>}
+      {!!error && <p className="text-red-500">{errorText}</p>}
       {!loading && !error && (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (

@@ -14,5 +14,81 @@
       "description": "这里是Hero区域的详细描述文本。"
     }
   },
-  "extra": {}
+  "extra": {
+    "header": {
+      "menu": [
+        { "label": "Product", "href": "#" },
+        { "label": "Company", "href": "#" },
+        { "label": "Resources", "href": "#" },
+        { "label": "Pricing", "href": "#" },
+        { "label": "Blog", "href": "/blog" }
+      ],
+      "cta": {
+        "bookDemoText": "预约演示",
+        "bookDemoHref": "#",
+        "primaryButtonText": "免费试用",
+        "primaryButtonHref": "#"
+      }
+    },
+    "hero": {
+      "emailPlaceholder": "请输入您的工作邮箱",
+      "primaryButtonText": "立即试用",
+      "joinText": "已有 100,000+ 用户加入",
+      "image": "https://www.usemotion.com/static/media/screenshot-calendar.62495791.png"
+    },
+    "features": {
+      "heading": "集中化配置的功能模块标题",
+      "description": "通过 config.json 管理功能模块的描述文案。",
+      "tabs": [
+        { "id": "calendar", "title": "Calendar", "description": "智能规划日程。", "image": "https://www.usemotion.com/static/media/screenshot-calendar.62495791.png" },
+        { "id": "projects", "title": "Projects", "description": "团队项目管理更高效。", "image": "https://www.usemotion.com/static/media/screenshot-projects.a9140819.png" },
+        { "id": "tasks", "title": "Tasks", "description": "自动安排任务与优先级。", "image": "https://www.usemotion.com/static/media/screenshot-tasks.a72a1c56.png" }
+      ]
+    },
+    "integrations": {
+      "heading": "与常用工具无缝集成",
+      "description": "支持多种生态工具互通。",
+      "list": [
+        { "name": "Gmail" },
+        { "name": "Google Calendar" },
+        { "name": "Microsoft Outlook" },
+        { "name": "Zoom" },
+        { "name": "Microsoft Teams" },
+        { "name": "Slack" },
+        { "name": "Zapier" }
+      ]
+    },
+    "testimonials": {
+      "heading": "超过 100,000 专业人士使用本产品提升效率",
+      "items": [
+        { "quote": "这是集中化文案示例：产品帮助我更高效地安排一切。", "author": "Alice", "title": "运营经理", "avatar": "https://picsum.photos/id/237/48/48" },
+        { "quote": "集中化管理让我们可以轻松替换不同站点的口碑内容。", "author": "Bob", "title": "团队负责人", "avatar": "https://picsum.photos/id/238/48/48" }
+      ]
+    },
+    "cta": {
+      "heading": "用 AI 帮你夺回时间",
+      "description": "减少处理邮件的时间，把精力放在更重要的事情上。",
+      "buttonText": "免费试用",
+      "buttonHref": "#"
+    },
+    "footer": {
+      "description": "集中化管理：时间、项目与任务 — 集于一身。",
+      "sections": [
+        { "title": "Product", "links": [ { "label": "Download", "href": "#" }, { "label": "Pricing", "href": "#" }, { "label": "Book a demo", "href": "#" } ] },
+        { "title": "Features", "links": [ { "label": "Calendar", "href": "#" }, { "label": "Project Management", "href": "#" }, { "label": "Task Management", "href": "#" }, { "label": "Meeting Scheduler", "href": "#" } ] },
+        { "title": "Resources", "links": [ { "label": "Blog", "href": "/blog" }, { "label": "Help Center", "href": "#" }, { "label": "What's new", "href": "#" } ] },
+        { "title": "Company", "links": [ { "label": "About us", "href": "#" }, { "label": "Careers", "href": "#" }, { "label": "Contact us", "href": "#" } ] }
+      ],
+      "legalLinks": [
+        { "label": "Terms of Service", "href": "#" },
+        { "label": "Privacy Policy", "href": "#" }
+      ]
+    },
+    "blog": {
+      "listHeading": "博客",
+      "loadingText": "加载中...",
+      "errorText": "加载失败",
+      "detailNotFoundText": "未找到"
+    }
+  }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useConfig } from "../contexts/ConfigContext";
 import { fetchBlogBySlug, type BlogDetail as BlogDetailType } from "../lib/strapi";
 
 const formatDate = (value: string | null) => {
@@ -16,6 +17,10 @@ const BlogDetail = () => {
   const [post, setPost] = useState<BlogDetailType | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const cfg = useConfig();
+  const loadingText = cfg?.extra?.blog?.loadingText || "Loading...";
+  const errorText = cfg?.extra?.blog?.errorText || "Error loading blog";
+  const notFoundText = cfg?.extra?.blog?.detailNotFoundText || "Not found";
 
   useEffect(() => {
     let mounted = true;
@@ -37,9 +42,9 @@ const BlogDetail = () => {
 
   return (
     <main className="container mx-auto px-4 pt-24 pb-16 max-w-3xl">
-      {loading && <p>Loading...</p>}
-      {!!error && <p className="text-red-500">{error}</p>}
-      {!loading && !error && !post && <p>Not found</p>}
+      {loading && <p>{loadingText}</p>}
+      {!!error && <p className="text-red-500">{errorText}</p>}
+      {!loading && !error && !post && <p>{notFoundText}</p>}
       {!loading && !error && post && (
         <article>
           <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
