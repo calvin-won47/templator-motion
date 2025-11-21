@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useConfig } from '../contexts/ConfigContext';
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a href={href} className="text-brand-gray-light hover:text-white transition-colors text-base">
@@ -10,20 +11,24 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   </a>
 );
 
-const MotionLogo = () => (
-  <a href="/" className="text-2xl font-bold flex items-center">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
-      <path d="M16 0L32 16L16 32L0 16L16 0Z" fill="url(#paint0_linear_1_2)"/>
-      <defs>
-        <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#A259FF"/>
-          <stop offset="1" stopColor="#4F46E5"/>
-        </linearGradient>
-      </defs>
-    </svg>
-    motion
-  </a>
-);
+const MotionLogo = () => {
+  const cfg = useConfig();
+  const name = cfg?.basic?.app_name || 'motion';
+  return (
+    <a href="/" className="text-2xl font-bold flex items-center">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2">
+        <path d="M16 0L32 16L16 32L0 16L16 0Z" fill="url(#paint0_linear_1_2)"/>
+        <defs>
+          <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#A259FF"/>
+            <stop offset="1" stopColor="#4F46E5"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      {name}
+    </a>
+  );
+};
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

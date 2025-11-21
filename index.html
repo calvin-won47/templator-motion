@@ -3,16 +3,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-58TDPTJ3');</script>
-    <!-- End Google Tag Manager -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Motion | The all-in-one app for your time</title>
+    <title>正在加载...</title>
+    <script>
+      window.APP_CONFIG = { basic: { app_name: "加载失败", strapi_url: "", strapi_site_slug: "error", gtmId: "" } };
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/config.json', false);
+        xhr.send(null);
+        if (xhr.status === 200) {
+          window.APP_CONFIG = JSON.parse(xhr.responseText);
+        }
+      } catch (error) {}
+      var cfg = (window.APP_CONFIG && window.APP_CONFIG.basic) || {};
+      document.title = (cfg.seo && cfg.seo.title) || cfg.app_name || '正在加载...';
+      (function(){
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.setAttribute('name','description'); document.head.appendChild(metaDesc); }
+        metaDesc.setAttribute('content', (cfg.seo && cfg.seo.description) || '');
+        var metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (!metaKeywords) { metaKeywords = document.createElement('meta'); metaKeywords.setAttribute('name','keywords'); document.head.appendChild(metaKeywords); }
+        metaKeywords.setAttribute('content', (cfg.seo && cfg.seo.keywords) || '');
+      })();
+      (function(w,d,s,l,i){
+        if(!i) return;
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer', (cfg.gtmId || 'GTM-58TDPTJ3'));
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

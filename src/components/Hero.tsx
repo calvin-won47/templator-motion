@@ -1,7 +1,11 @@
 
 import React from 'react';
+import { useConfig } from '../contexts/ConfigContext';
 
 const Hero: React.FC = () => {
+  const cfg = useConfig();
+  const slogan = cfg?.basic?.hero?.slogan || 'The all-in-one app for your time.';
+  const description = cfg?.basic?.hero?.description || 'Calendars, projects, and tasks — together.';
   return (
     <section className="relative py-20 md:py-32 text-center overflow-hidden">
        <div className="absolute inset-0 z-0">
@@ -9,10 +13,10 @@ const Hero: React.FC = () => {
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <h1 className="text-4xl md:text-7xl font-bold max-w-4xl mx-auto leading-tight tracking-tighter">
-          The all-in-one app for your time.
+          {slogan}
         </h1>
         <p className="text-lg md:text-xl text-brand-gray-light mt-6 max-w-2xl mx-auto">
-          Calendars, projects, and tasks — together.
+          {description}
         </p>
         <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
           <input
