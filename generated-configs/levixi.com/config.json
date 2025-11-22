@@ -1,0 +1,156 @@
+{
+  "basic": {
+    "app_name": "Levixium",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "levixi",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "Levixium - Online Learning Platform",
+      "description": "Advance your skills with Levixium, the hub for personal and professional growth.",
+      "keywords": "online learning, personal development, professional growth"
+    },
+    "hero": {
+      "slogan": "Unlock Your Potential",
+      "description": "Join Levixium to boost your career and personal growth with expert-led courses."
+    }
+  },
+  "extra": {
+    "header": {
+      "menu": [
+        {
+          "label": "Courses",
+          "href": "/courses"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "cta": {
+        "bookDemoText": "Book a Demo",
+        "bookDemoHref": "/demo",
+        "primaryButtonText": "Get Started",
+        "primaryButtonHref": "/signup"
+      }
+    },
+    "hero": {
+      "emailPlaceholder": "Enter your email",
+      "primaryButtonText": "Join Now",
+      "joinText": "Start your journey with Levixium",
+      "image": "/images/hero-image.jpg"
+    },
+    "features": {
+      "heading": "Why Choose Levixium?",
+      "description": "Discover the benefits of learning with us.",
+      "tabs": [
+        {
+          "id": "1",
+          "title": "Expert Instructors",
+          "description": "Learn from industry leaders.",
+          "image": "/images/feature-experts.jpg"
+        },
+        {
+          "id": "2",
+          "title": "Flexible Learning",
+          "description": "Courses that fit your schedule.",
+          "image": "/images/feature-flexible.jpg"
+        },
+        {
+          "id": "3",
+          "title": "Career Growth",
+          "description": "Advance your career with new skills.",
+          "image": "/images/feature-career.jpg"
+        }
+      ]
+    },
+    "integrations": {
+      "heading": "Seamless Integrations",
+      "description": "Connect with tools you already use.",
+      "list": [
+        {
+          "name": "Zoom"
+        },
+        {
+          "name": "Slack"
+        },
+        {
+          "name": "Google Calendar"
+        }
+      ]
+    },
+    "testimonials": {
+      "heading": "What Our Learners Say",
+      "items": [
+        {
+          "quote": "Levixium transformed my career.",
+          "author": "Jane Doe",
+          "title": "Marketing Specialist",
+          "avatar": "/images/testimonial-jane.jpg"
+        },
+        {
+          "quote": "The courses are top-notch.",
+          "author": "John Smith",
+          "title": "Software Engineer",
+          "avatar": "/images/testimonial-john.jpg"
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Elevate Your Skills?",
+      "description": "Join thousands of learners on Levixium.",
+      "buttonText": "Enroll Now",
+      "buttonHref": "/enroll"
+    },
+    "footer": {
+      "description": "Levixium is your partner in learning.",
+      "sections": [
+        {
+          "title": "Resources",
+          "links": [
+            {
+              "label": "Help Center",
+              "href": "/help"
+            },
+            {
+              "label": "Blog",
+              "href": "/blog"
+            }
+          ]
+        },
+        {
+          "title": "Company",
+          "links": [
+            {
+              "label": "About Us",
+              "href": "/about"
+            },
+            {
+              "label": "Careers",
+              "href": "/careers"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Privacy Policy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Terms of Service",
+          "href": "/terms"
+        }
+      ]
+    },
+    "blog": {
+      "listHeading": "From Our Blog",
+      "loadingText": "Loading articles...",
+      "errorText": "Error loading articles.",
+      "detailNotFoundText": "Article not found."
+    }
+  }
+}

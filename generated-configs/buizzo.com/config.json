@@ -1,0 +1,164 @@
+{
+  "basic": {
+    "app_name": "BuzzPersona",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "buizzo",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "BuzzPersona - Personal Branding & Networking",
+      "description": "Elevate your personal brand and expand your professional network with BuzzPersona.",
+      "keywords": "personal branding, networking, professional growth, BuzzPersona"
+    },
+    "hero": {
+      "slogan": "Shine Bright, Connect Right",
+      "description": "Join BuzzPersona to enhance your personal brand and connect with professionals worldwide."
+    }
+  },
+  "extra": {
+    "header": {
+      "menu": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Features",
+          "href": "/features"
+        },
+        {
+          "label": "Integrations",
+          "href": "/integrations"
+        },
+        {
+          "label": "Testimonials",
+          "href": "/testimonials"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "cta": {
+        "bookDemoText": "Book a Demo",
+        "bookDemoHref": "/book-demo",
+        "primaryButtonText": "Join Now",
+        "primaryButtonHref": "/join"
+      }
+    },
+    "hero": {
+      "emailPlaceholder": "Enter your email",
+      "primaryButtonText": "Get Started",
+      "joinText": "Join thousands of professionals",
+      "image": "/images/hero-image.jpg"
+    },
+    "features": {
+      "heading": "Features",
+      "description": "Discover how BuzzPersona empowers your professional growth.",
+      "tabs": [
+        {
+          "id": "1",
+          "title": "Profile Optimization",
+          "description": "Enhance your online presence with our profile optimization tools.",
+          "image": "/images/features-profile.jpg"
+        },
+        {
+          "id": "2",
+          "title": "Network Expansion",
+          "description": "Connect with like-minded professionals and grow your network.",
+          "image": "/images/features-network.jpg"
+        },
+        {
+          "id": "3",
+          "title": "Insightful Analytics",
+          "description": "Gain insights into your networking impact and brand reach.",
+          "image": "/images/features-analytics.jpg"
+        }
+      ]
+    },
+    "integrations": {
+      "heading": "Integrations",
+      "description": "Seamlessly integrate BuzzPersona with your favorite tools.",
+      "list": [
+        {
+          "name": "LinkedIn"
+        },
+        {
+          "name": "Twitter"
+        },
+        {
+          "name": "Slack"
+        }
+      ]
+    },
+    "testimonials": {
+      "heading": "Testimonials",
+      "items": [
+        {
+          "quote": "BuzzPersona transformed my professional networking.",
+          "author": "Jane Doe",
+          "title": "Marketing Manager",
+          "avatar": "/images/testimonial-jane.jpg"
+        },
+        {
+          "quote": "A must-have tool for personal branding.",
+          "author": "John Smith",
+          "title": "Freelancer",
+          "avatar": "/images/testimonial-john.jpg"
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Elevate Your Brand?",
+      "description": "Join BuzzPersona and start your journey to professional success.",
+      "buttonText": "Join BuzzPersona",
+      "buttonHref": "/join"
+    },
+    "footer": {
+      "description": "BuzzPersona - Elevate your personal brand and network.",
+      "sections": [
+        {
+          "title": "Company",
+          "links": [
+            {
+              "label": "About",
+              "href": "/about"
+            },
+            {
+              "label": "Careers",
+              "href": "/careers"
+            }
+          ]
+        },
+        {
+          "title": "Resources",
+          "links": [
+            {
+              "label": "Help Center",
+              "href": "/help"
+            },
+            {
+              "label": "Privacy Policy",
+              "href": "/privacy"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Terms of Service",
+          "href": "/terms"
+        },
+        {
+          "label": "Cookie Policy",
+          "href": "/cookies"
+        }
+      ]
+    },
+    "blog": {
+      "listHeading": "Latest Insights",
+      "loadingText": "Loading articles...",
+      "errorText": "Failed to load articles.",
+      "detailNotFoundText": "Article not found."
+    }
+  }
+}

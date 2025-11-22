@@ -1,0 +1,164 @@
+{
+  "basic": {
+    "app_name": "Tmpivo",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "tmpivo",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "Tmpivo: Revolutionize Your Workflow",
+      "description": "Discover Tmpivo, a platform designed to streamline your business processes.",
+      "keywords": "workflow, automation, business, Tmpivo"
+    },
+    "hero": {
+      "slogan": "Empower Your Business",
+      "description": "Transform the way you work with Tmpivo's innovative solutions."
+    }
+  },
+  "extra": {
+    "header": {
+      "menu": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Features",
+          "href": "/features"
+        },
+        {
+          "label": "Integrations",
+          "href": "/integrations"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "cta": {
+        "bookDemoText": "Book a Demo",
+        "bookDemoHref": "/book-demo",
+        "primaryButtonText": "Get Started",
+        "primaryButtonHref": "/signup"
+      }
+    },
+    "hero": {
+      "emailPlaceholder": "Enter your email",
+      "primaryButtonText": "Join Now",
+      "joinText": "Join the revolution",
+      "image": "/images/hero.png"
+    },
+    "features": {
+      "heading": "Features",
+      "description": "Explore what makes Tmpivo the best choice for your business.",
+      "tabs": [
+        {
+          "id": "automation",
+          "title": "Automation",
+          "description": "Automate your tasks with our advanced tools.",
+          "image": "/images/automation.png"
+        },
+        {
+          "id": "collaboration",
+          "title": "Collaboration",
+          "description": "Enhance team collaboration and productivity.",
+          "image": "/images/collaboration.png"
+        },
+        {
+          "id": "analytics",
+          "title": "Analytics",
+          "description": "Gain insights with powerful analytics.",
+          "image": "/images/analytics.png"
+        }
+      ]
+    },
+    "integrations": {
+      "heading": "Integrations",
+      "description": "Seamlessly integrate with your favorite tools.",
+      "list": [
+        {
+          "name": "Slack"
+        },
+        {
+          "name": "Google Drive"
+        },
+        {
+          "name": "Trello"
+        }
+      ]
+    },
+    "testimonials": {
+      "heading": "Testimonials",
+      "items": [
+        {
+          "quote": "Tmpivo has transformed our workflow.",
+          "author": "John Doe",
+          "title": "CEO, TechCorp",
+          "avatar": "/images/john-doe.png"
+        },
+        {
+          "quote": "An essential tool for our team.",
+          "author": "Jane Smith",
+          "title": "Project Manager, Innovate Inc.",
+          "avatar": "/images/jane-smith.png"
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Get Started?",
+      "description": "Sign up today and see the difference.",
+      "buttonText": "Sign Up",
+      "buttonHref": "/signup"
+    },
+    "footer": {
+      "description": "Tmpivo - Your partner in innovation.",
+      "sections": [
+        {
+          "title": "Company",
+          "links": [
+            {
+              "label": "About Us",
+              "href": "/about"
+            },
+            {
+              "label": "Careers",
+              "href": "/careers"
+            }
+          ]
+        },
+        {
+          "title": "Support",
+          "links": [
+            {
+              "label": "Help Center",
+              "href": "/help"
+            },
+            {
+              "label": "Contact Us",
+              "href": "/contact"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Privacy Policy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Terms of Service",
+          "href": "/terms"
+        }
+      ]
+    },
+    "blog": {
+      "listHeading": "Latest From Our Blog",
+      "loadingText": "Loading articles...",
+      "errorText": "Failed to load articles.",
+      "detailNotFoundText": "Blog post not found."
+    }
+  }
+}

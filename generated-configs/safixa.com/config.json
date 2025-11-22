@@ -1,0 +1,164 @@
+{
+  "basic": {
+    "app_name": "CipherGuardians",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "safixa",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "CipherGuardians - Leading Cybersecurity Solutions",
+      "description": "Protect your digital assets with CipherGuardians, the premier cybersecurity platform.",
+      "keywords": "cybersecurity, data protection, digital security, CipherGuardians"
+    },
+    "hero": {
+      "slogan": "Safeguard Your Digital World",
+      "description": "Empowering businesses with top-notch cybersecurity solutions."
+    }
+  },
+  "extra": {
+    "header": {
+      "menu": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Features",
+          "href": "/features"
+        },
+        {
+          "label": "Integrations",
+          "href": "/integrations"
+        },
+        {
+          "label": "Testimonials",
+          "href": "/testimonials"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog"
+        }
+      ],
+      "cta": {
+        "bookDemoText": "Book a Demo",
+        "bookDemoHref": "/book-demo",
+        "primaryButtonText": "Get Started",
+        "primaryButtonHref": "/get-started"
+      }
+    },
+    "hero": {
+      "emailPlaceholder": "Enter your email",
+      "primaryButtonText": "Join Us",
+      "joinText": "Stay ahead with CipherGuardians",
+      "image": "/images/hero-cybersecurity.jpg"
+    },
+    "features": {
+      "heading": "Our Features",
+      "description": "Explore the cutting-edge features that make us the best choice.",
+      "tabs": [
+        {
+          "id": "1",
+          "title": "Real-time Monitoring",
+          "description": "Stay vigilant with 24/7 monitoring.",
+          "image": "/images/features-monitoring.jpg"
+        },
+        {
+          "id": "2",
+          "title": "Advanced Threat Detection",
+          "description": "Identify threats before they become breaches.",
+          "image": "/images/features-threat-detection.jpg"
+        },
+        {
+          "id": "3",
+          "title": "Data Encryption",
+          "description": "Protect your data with state-of-the-art encryption.",
+          "image": "/images/features-encryption.jpg"
+        }
+      ]
+    },
+    "integrations": {
+      "heading": "Seamless Integrations",
+      "description": "Connect with your existing tools effortlessly.",
+      "list": [
+        {
+          "name": "AWS"
+        },
+        {
+          "name": "Azure"
+        },
+        {
+          "name": "Google Cloud"
+        }
+      ]
+    },
+    "testimonials": {
+      "heading": "What Our Clients Say",
+      "items": [
+        {
+          "quote": "CipherGuardians has transformed our security posture.",
+          "author": "John Doe",
+          "title": "CTO, Tech Innovations",
+          "avatar": "/images/testimonial-john.jpg"
+        },
+        {
+          "quote": "Unmatched cybersecurity services.",
+          "author": "Jane Smith",
+          "title": "CEO, FinSecure",
+          "avatar": "/images/testimonial-jane.jpg"
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Protect Your Business?",
+      "description": "Join the thousands who trust CipherGuardians.",
+      "buttonText": "Contact Us",
+      "buttonHref": "/contact"
+    },
+    "footer": {
+      "description": "CipherGuardians - Your cybersecurity partner.",
+      "sections": [
+        {
+          "title": "Company",
+          "links": [
+            {
+              "label": "About Us",
+              "href": "/about"
+            },
+            {
+              "label": "Careers",
+              "href": "/careers"
+            }
+          ]
+        },
+        {
+          "title": "Support",
+          "links": [
+            {
+              "label": "Help Center",
+              "href": "/help"
+            },
+            {
+              "label": "Contact Support",
+              "href": "/support"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Privacy Policy",
+          "href": "/privacy"
+        },
+        {
+          "label": "Terms of Service",
+          "href": "/terms"
+        }
+      ]
+    },
+    "blog": {
+      "listHeading": "Latest Insights",
+      "loadingText": "Loading articles...",
+      "errorText": "Failed to load articles.",
+      "detailNotFoundText": "Article not found."
+    }
+  }
+}

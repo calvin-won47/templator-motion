@@ -1,0 +1,164 @@
+{
+  "basic": {
+    "app_name": "Kavaverse",
+    "strapi_url": "https://2amcreations.com",
+    "strapi_site_slug": "kavaoo",
+    "gtmId": "GTM-XXXXXX",
+    "seo": {
+      "title": "Kavaverse - Elevate Your Experience",
+      "description": "Discover Kavaverse, where innovation meets excellence. Join us to explore limitless possibilities.",
+      "keywords": "Kavaverse, innovation, excellence, technology, solutions"
+    },
+    "hero": {
+      "slogan": "Elevate Your Experience",
+      "description": "Join Kavaverse to unlock your potential with cutting-edge solutions."
+    }
+  },
+  "extra": {
+    "header": {
+      "menu": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "Features",
+          "href": "/features"
+        },
+        {
+          "label": "Integrations",
+          "href": "/integrations"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "cta": {
+        "bookDemoText": "Book a Demo",
+        "bookDemoHref": "/demo",
+        "primaryButtonText": "Get Started",
+        "primaryButtonHref": "/get-started"
+      }
+    },
+    "hero": {
+      "emailPlaceholder": "Enter your email",
+      "primaryButtonText": "Join Now",
+      "joinText": "Join the revolution with Kavaverse.",
+      "image": "/images/hero-image.jpg"
+    },
+    "features": {
+      "heading": "Features",
+      "description": "Explore our cutting-edge features designed to elevate your business.",
+      "tabs": [
+        {
+          "id": "1",
+          "title": "Innovation",
+          "description": "Stay ahead with our innovative solutions.",
+          "image": "/images/feature-innovation.jpg"
+        },
+        {
+          "id": "2",
+          "title": "Performance",
+          "description": "Experience unparalleled performance.",
+          "image": "/images/feature-performance.jpg"
+        },
+        {
+          "id": "3",
+          "title": "Scalability",
+          "description": "Grow without limits with our scalable solutions.",
+          "image": "/images/feature-scalability.jpg"
+        }
+      ]
+    },
+    "integrations": {
+      "heading": "Integrations",
+      "description": "Seamlessly connect with your favorite tools.",
+      "list": [
+        {
+          "name": "Zapier"
+        },
+        {
+          "name": "Slack"
+        },
+        {
+          "name": "Salesforce"
+        }
+      ]
+    },
+    "testimonials": {
+      "heading": "Testimonials",
+      "items": [
+        {
+          "quote": "Kavaverse transformed our operations.",
+          "author": "John Doe",
+          "title": "CEO, TechCorp",
+          "avatar": "/images/avatar-john.jpg"
+        },
+        {
+          "quote": "A game-changer for our team.",
+          "author": "Jane Smith",
+          "title": "CTO, Innovate Ltd",
+          "avatar": "/images/avatar-jane.jpg"
+        }
+      ]
+    },
+    "cta": {
+      "heading": "Ready to Elevate?",
+      "description": "Join Kavaverse today and transform your business.",
+      "buttonText": "Get Started",
+      "buttonHref": "/get-started"
+    },
+    "footer": {
+      "description": "Kavaverse - Your gateway to innovation.",
+      "sections": [
+        {
+          "title": "Company",
+          "links": [
+            {
+              "label": "About Us",
+              "href": "/about"
+            },
+            {
+              "label": "Careers",
+              "href": "/careers"
+            }
+          ]
+        },
+        {
+          "title": "Resources",
+          "links": [
+            {
+              "label": "Blog",
+              "href": "/blog"
+            },
+            {
+              "label": "Support",
+              "href": "/support"
+            }
+          ]
+        }
+      ],
+      "legalLinks": [
+        {
+          "label": "Privacy Policy",
+          "href": "/privacy-policy"
+        },
+        {
+          "label": "Terms of Service",
+          "href": "/terms-of-service"
+        }
+      ]
+    },
+    "blog": {
+      "listHeading": "Latest Articles",
+      "loadingText": "Loading articles...",
+      "errorText": "Error loading articles.",
+      "detailNotFoundText": "Article not found."
+    }
+  }
+}

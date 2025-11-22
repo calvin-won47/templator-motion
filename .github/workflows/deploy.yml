@@ -65,8 +65,11 @@ jobs:
     strategy:
       matrix:
         site:
-          - { path: /www/wwwroot/xmyxyswkj.com, url: https://xmyxyswkj.com }
-          - { path: /www/wwwroot/ganyurencai.com, url: https://ganyurencai.com }
+          - { path: /www/wwwroot/buizzo.com, url: https://buizzo.com }
+          - { path: /www/wwwroot/kavaoo.com, url: https://kavaoo.com }
+          - { path: /www/wwwroot/tmpivo.com, url: https://tmpivo.com }
+          - { path: /www/wwwroot/levixi.com, url: https://levixi.com }
+          - { path: /www/wwwroot/safixa.com, url: https://safixa.com }
           # - /www/wwwroot/client-c.com
           #... 您可以在这里列出100个
 
@@ -96,19 +99,26 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Read remote config.json if exists
+      - name: Extract domain from site URL
+        id: extract
         run: |
-          if ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "test -f ${{ matrix.site.path }}/config.json"; then
-            ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "cat ${{ matrix.site.path }}/config.json" > remote-config.json
-          else
-            echo '{}' > remote-config.json
-          fi
+          DOMAIN=$(echo "${{ matrix.site.url }}" | sed -E 's~https?://~~' | cut -d'/' -f1)
+          echo "domain=$DOMAIN" >> $GITHUB_OUTPUT
+
+      - name: Select domain config.json
+        run: |
+          DOMAIN='${{ steps.extract.outputs.domain }}'
+          CANDIDATE="./generated-configs/${DOMAIN}/config.json"
+          ALT="./generated-configs-llm/${DOMAIN}/config.json"
+          FALLBACK="./public/config.json"
+          if [ -f "$CANDIDATE" ]; then SEL="$CANDIDATE"; elif [ -f "$ALT" ]; then SEL="$ALT"; else SEL="$FALLBACK"; fi
+          echo "SELECTED_CONFIG=$SEL" >> $GITHUB_ENV
 
       - name: Generate sitemap.xml and robots.txt
         run: node scripts/generate-sitemap.mjs
         env:
           SITE_URL: ${{ matrix.site.url }}
-          CONFIG_PATH: ./remote-config.json
+          CONFIG_PATH: ${{ env.SELECTED_CONFIG }}
           STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
 
       - name: Deploy to ${{ matrix.site.path }} via rsync
@@ -123,9 +133,9 @@ jobs:
             --exclude='ssl/' \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}
 
-      - name: Seed config.json if missing (first-time only)
+      - name: Upload domain config.json
         run: |
-          rsync -avzr --ignore-existing ./public/config.json ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/
+          rsync -avzr "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/config.json
 
   # --- 作业 3: 仅部署到一个指定站点（手动触发用） ---
   deploy_single:
@@ -161,19 +171,26 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Read remote config.json if exists
+      - name: Extract domain from site URL
+        id: extract_single
         run: |
-          if ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "test -f ${{ inputs.target_site_path }}/config.json"; then
-            ssh ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} "cat ${{ inputs.target_site_path }}/config.json" > remote-config.json
-          else
-            echo '{}' > remote-config.json
-          fi
+          DOMAIN=$(echo "${{ inputs.target_site_url }}" | sed -E 's~https?://~~' | cut -d'/' -f1)
+          echo "domain=$DOMAIN" >> $GITHUB_OUTPUT
+
+      - name: Select domain config.json
+        run: |
+          DOMAIN='${{ steps.extract_single.outputs.domain }}'
+          CANDIDATE="./generated-configs/${DOMAIN}/config.json"
+          ALT="./generated-configs-llm/${DOMAIN}/config.json"
+          FALLBACK="./public/config.json"
+          if [ -f "$CANDIDATE" ]; then SEL="$CANDIDATE"; elif [ -f "$ALT" ]; then SEL="$ALT"; else SEL="$FALLBACK"; fi
+          echo "SELECTED_CONFIG=$SEL" >> $GITHUB_ENV
 
       - name: Generate sitemap.xml and robots.txt
         run: node scripts/generate-sitemap.mjs
         env:
           SITE_URL: ${{ inputs.target_site_url }}
-          CONFIG_PATH: ./remote-config.json
+          CONFIG_PATH: ${{ env.SELECTED_CONFIG }}
           STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
 
       - name: Deploy to ${{ inputs.target_site_path }} via rsync
@@ -188,6 +205,6 @@ jobs:
             --exclude='ssl/' \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}
 
-      - name: Seed config.json if missing (first-time only)
+      - name: Upload domain config.json
         run: |
-          rsync -avzr --ignore-existing ./public/config.json ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/
+          rsync -avzr "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/config.json
