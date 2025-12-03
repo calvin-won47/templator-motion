@@ -135,6 +135,13 @@ jobs:
           CONFIG_PATH: ${{ env.SELECTED_CONFIG }}
           STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
 
+      - name: Add static fallbacks for blog detail routes
+        run: node scripts/generate-static-blog-routes.mjs
+        env:
+          CONFIG_PATH: ${{ env.SELECTED_CONFIG }}
+          DIST_DIR: ./dist
+          STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+
       - name: Deploy to ${{ matrix.site.path }} via rsync
         run: |
           rsync -rlDz \
@@ -216,6 +223,13 @@ jobs:
         env:
           SITE_URL: ${{ inputs.target_site_url }}
           CONFIG_PATH: ${{ env.SELECTED_CONFIG }}
+          STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
+
+      - name: Add static fallbacks for blog detail routes
+        run: node scripts/generate-static-blog-routes.mjs
+        env:
+          CONFIG_PATH: ${{ env.SELECTED_CONFIG }}
+          DIST_DIR: ./dist
           STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
 
       - name: Deploy to ${{ inputs.target_site_path }} via rsync
