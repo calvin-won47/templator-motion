@@ -63,6 +63,8 @@ jobs:
     # --- 关键：使用 Matrix 策略批量部署 ---
     # 在这里手动维护您所有站点的“服务器绝对路径”
     strategy:
+      # 避免多并发 SSH 连接把服务器防火墙打满（曾出现 kex_exchange_identification reset）
+      max-parallel: 1
       matrix:
         site:
           - { path: /www/wwwroot/buizzo.com, url: https://buizzo.com }
@@ -99,6 +101,8 @@ jobs:
           SSH_PORT="${{ secrets.BAOTA_SSH_PORT }}"
           if [ -z "$SSH_PORT" ]; then SSH_PORT=22; fi
           echo "SSH_PORT=$SSH_PORT" >> $GITHUB_ENV
+          echo "SSH_OPTS=-p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30 -o ConnectionAttempts=5" >> $GITHUB_ENV
+          echo "SSH_OPTS=-p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30 -o ConnectionAttempts=5" >> $GITHUB_ENV
 
       - name: Add server to known_hosts
         run: |
@@ -141,12 +145,12 @@ jobs:
             --exclude='.well-known/' \
             --exclude='logs/' \
             --exclude='ssl/' \
-            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" \
+            -e "ssh $SSH_OPTS" \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}
 
       - name: Upload domain config.json
         run: |
-          rsync -avzr -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/config.json
+          rsync -avzr -e "ssh $SSH_OPTS" "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/config.json
 
   # --- 作业 3: 仅部署到一个指定站点（手动触发用） ---
   deploy_single:
@@ -224,9 +228,9 @@ jobs:
             --exclude='.well-known/' \
             --exclude='logs/' \
             --exclude='ssl/' \
-            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" \
+            -e "ssh $SSH_OPTS" \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}
 
       - name: Upload domain config.json
         run: |
-          rsync -avzr -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/config.json
+          rsync -avzr -e "ssh $SSH_OPTS" "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/config.json
