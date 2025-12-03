@@ -94,10 +94,20 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.BAOTA_SSH_PRIVATE_KEY }}
 
+      - name: Set SSH port
+        run: |
+          SSH_PORT="${{ secrets.BAOTA_SSH_PORT }}"
+          if [ -z "$SSH_PORT" ]; then SSH_PORT=22; fi
+          echo "SSH_PORT=$SSH_PORT" >> $GITHUB_ENV
+
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p "$SSH_PORT" -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Test SSH connectivity
+        run: |
+          ssh -p "$SSH_PORT" -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30 ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} exit
 
       - name: Extract domain from site URL
         id: extract
@@ -131,11 +141,12 @@ jobs:
             --exclude='.well-known/' \
             --exclude='logs/' \
             --exclude='ssl/' \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}
 
       - name: Upload domain config.json
         run: |
-          rsync -avzr "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/config.json
+          rsync -avzr -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ matrix.site.path }}/config.json
 
   # --- 作业 3: 仅部署到一个指定站点（手动触发用） ---
   deploy_single:
@@ -166,10 +177,20 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.BAOTA_SSH_PRIVATE_KEY }}
 
+      - name: Set SSH port
+        run: |
+          SSH_PORT="${{ secrets.BAOTA_SSH_PORT }}"
+          if [ -z "$SSH_PORT" ]; then SSH_PORT=22; fi
+          echo "SSH_PORT=$SSH_PORT" >> $GITHUB_ENV
+
       - name: Add server to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p "$SSH_PORT" -H ${{ secrets.BAOTA_SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Test SSH connectivity
+        run: |
+          ssh -p "$SSH_PORT" -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30 ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }} exit
 
       - name: Extract domain from site URL
         id: extract_single
@@ -203,8 +224,9 @@ jobs:
             --exclude='.well-known/' \
             --exclude='logs/' \
             --exclude='ssl/' \
+            -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" \
             ./dist/ ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}
 
       - name: Upload domain config.json
         run: |
-          rsync -avzr "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/config.json
+          rsync -avzr -e "ssh -p $SSH_PORT -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o ConnectTimeout=30" "${{ env.SELECTED_CONFIG }}" ${{ secrets.BAOTA_SSH_USER }}@${{ secrets.BAOTA_SERVER_IP }}:${{ inputs.target_site_path }}/config.json
